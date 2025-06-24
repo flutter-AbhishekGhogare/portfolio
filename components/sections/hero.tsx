@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 export function Hero() {
   const [currentRole, setCurrentRole] = useState(0)
   const [isDownloading, setIsDownloading] = useState(false)
-  const roles = ["Flutter Developer", "Integration Specialist", "IBM ACE Developer", "Mobile App Developer"]
+  const roles = ["Flutter Developer", "Middleware Integration", "IBM ACE Developer", "Mobile App Developer"]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,7 +78,7 @@ export function Hero() {
               <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">8+</div>
+              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">6+</div>
               <div className="text-sm text-gray-600 dark:text-gray-400">Projects Built</div>
             </div>
             <div className="text-center">
