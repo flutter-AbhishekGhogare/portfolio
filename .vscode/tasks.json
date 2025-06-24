@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "Run Next.js App",
-			"command": "pnpm install && pnpm run dev",
+			"command": "pnpm install; pnpm run dev",
 			"group": "build",
 			"isBackground": true,
 			"problemMatcher": [

@@ -7,42 +7,42 @@ import { Button } from "@/components/ui/button"
 interface Skill {
   name: string
   category: string
-  icon: string
+  logo: string 
 }
 
 const skills: Skill[] = [
   // Flutter & Mobile Development
-  { name: "Flutter", category: "Mobile", icon: "📱" },
-  { name: "Dart", category: "Mobile", icon: "🎯" },
-  { name: "SQLite", category: "Mobile", icon: "💿" },
+  { name: "Flutter", category: "Mobile", logo: "/logos/flutter.png" },
+  { name: "Dart", category: "Mobile", logo: "/logos/dart.png" },
+  { name: "SQLite", category: "Mobile", logo: "/logos/sqlite.png" },
 
   // IBM Integration
-  { name: "IBM ACE", category: "Integration", icon: "🔗" },
-  { name: "ESQL", category: "Integration", icon: "💾" },
-  { name: "IBM MQ", category: "Integration", icon: "📨" },
+  { name: "IBM ACE", category: "Integration", logo: "/logos/ibm.png" },
+  { name: "ESQL", category: "Integration", logo: "/logos/sql.png" },
+  { name: "IBM MQ", category: "Integration", logo: "/logos/ibm.png" },
 
   // Backend & APIs
-  { name: "REST API", category: "Backend", icon: "🌐" },
-  { name: "SOAP", category: "Backend", icon: "🧼" },
-  { name: "JSON/XML", category: "Backend", icon: "📄" },
+  { name: "REST API", category: "Backend", logo: "/logos/rest-api.png" },
+  { name: "SOAP", category: "Backend", logo: "/logos/soapui.jpeg" },
+  { name: "JSON", category: "Backend", logo: "/logos/json.png" },
+  { name: "XML", category: "Backend", logo: "/logos/xml.png" },
 
   // Programming Languages
-  { name: "Java", category: "Languages", icon: "☕" },
-  { name: "Python", category: "Languages", icon: "🐍" },
+  { name: "Java", category: "Languages", logo: "/logos/java.png" },
+  { name: "Python", category: "Languages", logo: "/logos/python.png" },
 
   // Database
-  { name: "SQL", category: "Database", icon: "🗄️" },
-  { name: "MySQL", category: "Database", icon: "🐬" },
-  { name: "ODBC", category: "Database", icon: "🔌" },
+  { name: "SQL", category: "Database", logo: "/logos/sql.png" },
+  { name: "MySQL", category: "Database", logo: "/logos/my-sql.png" },
+  { name: "ODBC", category: "Database", logo: "/logos/database.png" },
 
   // ServiceNow
-  { name: "ServiceNow", category: "Platform", icon: "🔧" },
-  { name: "GlideRecord", category: "Platform", icon: "📊" },
+  { name: "ServiceNow", category: "Platform", logo: "/logos/servicenow.png" },
 
   // Tools & Others
-  { name: "Git", category: "Tools", icon: "🔀" },
-  { name: "Postman", category: "Tools", icon: "📮" },
-  { name: "Firebase", category: "Cloud", icon: "🔥" },
+  { name: "Git", category: "Tools", logo: "/logos/git.png" },
+  { name: "Postman", category: "Tools", logo: "/logos/postman-inc.png" },
+  { name: "Firebase", category: "Cloud", logo: "/logos/firebase.png" },
 ]
 
 const categories = [
@@ -103,9 +103,12 @@ export function Skills() {
               >
                 <CardContent className="p-4 text-center">
                   <div className="flex flex-col items-center space-y-2">
-                    <span className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {skill.icon}
-                    </span>
+                    <img
+                      src={skill.logo}
+                      alt={skill.name + ' logo'}
+                      className="w-12 h-12 object-contain mb-2"
+                      style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.08))' }}
+                    />
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">{skill.name}</h3>
                   </div>
                 </CardContent>
@@ -113,33 +116,7 @@ export function Skills() {
             ))}
           </div>
 
-          {/* Skills Summary */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                  {skills.filter((s) => ["Flutter", "IBM ACE", "Java", "REST API", "SQL"].includes(s.name)).length}
-                </div>
-                <p className="text-gray-600 dark:text-gray-400">Core Technologies</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">{skills.length}</div>
-                <p className="text-gray-600 dark:text-gray-400">Total Skills</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                  {new Set(skills.map((s) => s.category)).size}
-                </div>
-                <p className="text-gray-600 dark:text-gray-400">Technology Categories</p>
-              </CardContent>
-            </Card>
-          </div>
+         
         </div>
       </div>
     </section>
