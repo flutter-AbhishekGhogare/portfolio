@@ -40,7 +40,7 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
-    id: "2",
+    id: "4",
     type: "education",
     title: "Bachelor of Engineering (Electronics & Telecommunication)",
     organization: "TSSM's Bhivarabai Sawant College of Engineering & Research",
@@ -57,7 +57,7 @@ const timelineData: TimelineItem[] = [
     type: "certification",
     title: "IBM Integration Bus - Developer Track (Badge)",
     organization: "IBM",
-    period: "2024 – 2025",
+    period: "2024",
     description: [
       "Earned IBM Integration Bus Developer certification with badge",
       "Demonstrated expertise in enterprise integration patterns",
@@ -66,11 +66,11 @@ const timelineData: TimelineItem[] = [
     link: "https://www.credly.com/badges/your-badge-id",
   },
   {
-    id: "4",
+    id: "2",
     type: "certification",
     title: "ServiceNow Fundamentals",
     organization: "ServiceNow",
-    period: "2023 – 2024",
+    period: "2025",
     description: [
       "Completed ServiceNow platform fundamentals training",
       "Learned GlideRecord, Script Includes, and CMDB concepts",
@@ -82,7 +82,7 @@ const timelineData: TimelineItem[] = [
     type: "certification",
     title: "Flutter Development",
     organization: "Incubator",
-    period: "2020 – 2024",
+    period: "2024",
     description: [
       "Comprehensive Flutter development training program",
       "Learned cross-platform mobile app development with Dart",
@@ -94,7 +94,7 @@ const timelineData: TimelineItem[] = [
     type: "certification",
     title: "Java Programming",
     organization: "Core2Web",
-    period: "2019 – 2020",
+    period: "2023",
     description: [
       "Foundational Java programming certification",
       "Object-oriented programming concepts and best practices",
@@ -124,7 +124,7 @@ const timelineData: TimelineItem[] = [
     description: [
       "Completed secondary education with excellent academic performance",
       "Built strong foundation in core subjects",
-      "Developed interest in technology and programming",
+      "Participated in extracurricular activities and community service",
     ],
   },
 ]
