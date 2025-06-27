@@ -24,7 +24,7 @@ const timelineData: TimelineItem[] = [
     type: "work",
     title: "IBM App Connect Enterprise Developer",
     organization: "Eidiko Systems Integrators",
-    location: "Remote",
+    location: "Hyderabad",
     period: "Aug 2024 – Present",
     description: [
       "Designed integration flows to connect enterprise systems and transform data",
