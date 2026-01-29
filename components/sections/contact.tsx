@@ -8,8 +8,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { sendEmail } from "../../actions/send-email"
-
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -23,32 +21,51 @@ export function Contact() {
     message: string
   } | null>(null)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitResult(null)
 
-    const formDataObj = new FormData()
-    formDataObj.append("name", formData.name)
-    formDataObj.append("email", formData.email)
-    formDataObj.append("subject", formData.subject)
-    formDataObj.append("message", formData.message)
-
     try {
-      const result = await sendEmail(formDataObj)
-      setSubmitResult(result)
+      // Web3Forms is a frontend-only service protected by Cloudflare bot filtering.
+      // Server-side requests are blocked, so the access key must be public and used client-side.
+      // This is the intended and secure way to use Web3Forms.
+      const formDataToSend = new FormData()
+      formDataToSend.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "")
+      formDataToSend.append("name", formData.name)
+      formDataToSend.append("email", formData.email)
+      formDataToSend.append("subject", `New Portfolio Contact: ${formData.subject}`)
+      formDataToSend.append("message", formData.message)
+      formDataToSend.append("from_name", "Portfolio Website")
 
-      if (result.success) {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitResult({
+          success: true,
+          message: "Thank you for your message! I've received it and will respond within 24 hours.",
+        })
         // Reset form after successful submission
         setTimeout(() => {
           setFormData({ name: "", email: "", subject: "", message: "" })
           setSubmitResult(null)
         }, 5000)
+      } else {
+        setSubmitResult({
+          success: false,
+          message: data.message || "Failed to send message. Please try again.",
+        })
       }
     } catch (error) {
+      console.error("[v0] Error sending message:", error)
       setSubmitResult({
         success: false,
-        message: "An unexpected error occurred. Please try again.",
+        message: "Unable to send message. Please email me directly at abhishekghogare45@gmail.com",
       })
     } finally {
       setIsSubmitting(false)
@@ -228,6 +245,16 @@ export function Contact() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot field for spam bots */}
+                    <input
+                      type="checkbox"
+                      name="botcheck"
+                      className="hidden"
+                      style={{ display: "none" }}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label
