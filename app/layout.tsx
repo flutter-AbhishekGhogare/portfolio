@@ -5,9 +5,9 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: 'Abhishek Ghogare',
+  description: 'Abhishek Ghogare\'s portfolio',
+  // generator: 'v0.dev',
 }
 
 export default function RootLayout({
